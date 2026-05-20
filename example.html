@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--
+  generated-by: plan-visualize
+  source: example.md
+  source-hash: sha256:3c274ac9276aac492929eaa23207d56d09c84eea654027bbc55f37934c27dae0
+  generated-at: 2026-05-20T03:27:55Z
+  ⚠️ 자동 생성. 직접 수정 X. MD 수정 후 plan-visualize 재실행.
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이메일 + 비밀번호 로그인 — Plan</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #60a5fa; --success: #34d399; --warning: #fbbf24;
+      --danger: #f87171; --decision: #a78bfa; --code-bg: #0b1120;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif; line-height: 1.6; font-size: 15px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    .stale-warning { background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 16px; font-size: 12px; color: var(--muted); text-align: center; }
+    .stale-warning strong { color: var(--warning); }
+    .hero { background: linear-gradient(135deg, var(--surface), var(--surface-2)); border-radius: var(--radius); padding: 28px; margin-bottom: 28px; border: 1px solid var(--border); }
+    .hero h1 { font-size: 28px; margin: 0 0 8px 0; }
+    .hero .summary { font-size: 17px; color: var(--muted); margin-bottom: 14px; }
+    .badge { display: inline-block; padding: 4px 10px; margin-right: 6px; background: rgba(96,165,250,0.15); color: var(--accent); border-radius: 6px; font-size: 12px; font-weight: 500; }
+    section { margin-bottom: 28px; }
+    section h2 { font-size: 20px; margin: 0 0 14px 0; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+    section h3 { font-size: 16px; margin: 16px 0 8px 0; }
+    .decision-box { background: rgba(167,139,250,0.08); border: 2px solid var(--decision); border-radius: var(--radius); padding: 18px 20px; margin: 12px 0 24px; }
+    .decision-box h2 { color: var(--decision); border-bottom-color: var(--decision); }
+    .risk-box { border-radius: var(--radius); padding: 14px 18px; margin: 10px 0; border-left: 4px solid; }
+    .risk-p0 { background: rgba(248,113,113,0.08); border-color: var(--danger); }
+    .risk-p1 { background: rgba(251,191,36,0.08); border-color: var(--warning); }
+    .risk-box h3 { margin: 0 0 6px 0; font-size: 15px; }
+    .risk-box .mit { margin-top: 6px; font-size: 13px; color: var(--muted); }
+    .scope-out { background: rgba(71,85,105,0.15); border: 1px dashed var(--muted); border-radius: var(--radius); padding: 14px 18px; }
+    .scope-out h2 { color: var(--muted); border-bottom-color: var(--muted); }
+    .scope-out li { color: var(--muted); }
+    .diagram { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; overflow-x: auto; }
+    .mermaid { text-align: center; }
+    table.styled { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; margin: 10px 0; }
+    table.styled th, table.styled td { padding: 9px 13px; text-align: left; border-bottom: 1px solid var(--border); font-size: 14px; }
+    table.styled th { background: var(--surface-2); font-weight: 600; }
+    table.styled tr.recommended { background: rgba(52,211,153,0.08); }
+    .api-card { background: var(--surface); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 14px; margin: 8px 0; }
+    .api-method { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-right: 8px; color: white; }
+    .api-post { background: var(--accent); }
+    .api-path { font-family: 'SF Mono', monospace; font-size: 14px; }
+    .wireframe { background: white; color: #1e293b; border-radius: var(--radius); padding: 20px; margin: 12px 0; }
+    .wireframe .frame { border: 2px dashed #94a3b8; border-radius: 6px; padding: 14px; }
+    .wireframe .hdr { padding: 10px; background: #f1f5f9; border-bottom: 1px solid #cbd5e1; font-weight: 600; text-align: center; margin-bottom: 12px; }
+    .wireframe .inp { padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 4px; margin-bottom: 10px; color: #94a3b8; font-size: 14px; }
+    .wireframe .btn-primary { padding: 11px; background: #60a5fa; color: white; border-radius: 4px; text-align: center; font-weight: 600; margin: 10px 0; }
+    .wireframe .btn-secondary { padding: 9px; background: #e2e8f0; border-radius: 4px; text-align: center; margin: 8px 0; font-size: 14px; }
+    .wireframe .divider { text-align: center; color: #94a3b8; margin: 12px 0; font-size: 12px; }
+    .wireframe .link { color: #60a5fa; text-align: center; font-size: 13px; margin-top: 8px; text-decoration: underline; }
+    .file-new { color: var(--success); font-weight: 600; }
+    .file-edit { color: var(--warning); font-weight: 600; }
+    code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 13px; color: var(--warning); }
+    pre.code-block { background: var(--code-bg); padding: 14px; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); }
+    pre.code-block code { background: transparent; padding: 0; color: var(--text); }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="stale-warning">
+    <strong>⚠️ 자동 생성 문서</strong> — 직접 수정 X.
+    <code>example.md</code> 수정 후 <code>plan-visualize</code> 재실행.
+  </div>
+  <div class="container">
+
+    <header class="hero">
+      <div style="display:inline-block; padding:4px 12px; background:var(--accent); color:white; border-radius:999px; font-size:12px; font-weight:700; margin-bottom:12px;">📋 PLAN</div>
+      <h1>이메일 + 비밀번호 로그인</h1>
+      <p class="summary">현재 소셜 전용인 로그인에 이메일 옵션을 추가해, 소셜 화면에서 이탈하는 15% 유저를 회복.</p>
+      <div>
+        <span class="badge">복잡도: ●○○○○ Simple</span>
+        <span class="badge">파일: 6개 (NEW 5 / EDIT 1)</span>
+        <span class="badge">새 테이블: 1개</span>
+        <span class="badge">API: 2개</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>🎯 Why</h2>
+      <p>내부 분석상 <strong>가입 시도의 15% 가 소셜 제공자 화면에서 이탈</strong> — 3rd-party 권한 부여 원치 않거나 해당 계정 없는 유저. 이메일/비밀번호 추가로 이탈 대부분 회복 가능.</p>
+    </section>
+
+    <section>
+      <h2>📈 Success Metrics</h2>
+      <table class="styled">
+        <thead>
+          <tr><th>지표</th><th>Before</th><th>After 목표</th><th>측정 방법</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>가입 완료율</td><td>62%</td><td><strong>75%+</strong></td><td>퍼널 분석, 주간 평균</td></tr>
+          <tr><td>첫 로그인 도달 시간</td><td>42초 (소셜)</td><td><strong>&lt;30초 (이메일)</strong></td><td>페이지 timing 이벤트</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="decision-box">
+      <h2>❓ 결정 필요 — bcrypt cost factor</h2>
+      <table class="styled">
+        <thead><tr><th>옵션</th><th>장</th><th>단</th><th>권장</th></tr></thead>
+        <tbody>
+          <tr><td>A. bcrypt cost = 12</td><td>더 안전</td><td>로그인 지연 ~300ms</td><td></td></tr>
+          <tr class="recommended"><td>B. bcrypt cost = 10</td><td>지연 &lt;100ms</td><td>약간 약함</td><td>✓ (2024+ 업계 default)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>⚠️ 리스크</h2>
+      <div class="risk-box risk-p0">
+        <h3>🚨 P0 — 로그인 지연 spike</h3>
+        <p>bcrypt cost 너무 높음 → 유저가 앱 느리게 인지 → 이탈.</p>
+        <p class="mit">대응: cost=10, staging 에서 p95 지연 측정 후 출시.</p>
+      </div>
+      <div class="risk-box risk-p1">
+        <h3>⚠️ P1 — 비밀번호 재설정 흐름 없음</h3>
+        <p>비밀번호 까먹은 유저 막힘.</p>
+        <p class="mit">대응: "비밀번호 찾기? 고객센터 문의" 임시 링크. 재설정 흐름은 다음 PR.</p>
+      </div>
+    </section>
+
+    <section class="scope-out">
+      <h2>⛔ 이번 PR 안 함</h2>
+      <ul>
+        <li>2FA / TOTP — 다음 PR</li>
+        <li>매직 링크 — backlog</li>
+        <li>비밀번호 재설정 — 다음 PR (임시: 고객센터 이메일)</li>
+        <li>Rate limiting — 별도 보안 PR</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🔄 사용자 흐름</h2>
+      <div class="diagram">
+        <pre class="mermaid">
+sequenceDiagram
+  actor U as 유저
+  participant UI as 로그인 화면
+  participant API as /api/auth/login
+  participant DB as auth_passwords
+  participant Sess as 세션
+
+  U->>UI: 이메일 + 비밀번호 입력
+  UI->>UI: zod 검증 (이메일 형식, 비밀번호 8자+)
+  UI->>API: POST { email, password }
+  API->>DB: SELECT by user_id
+  DB-->>API: hash 행
+  API->>API: bcrypt.compare(password, hash)
+  alt 일치
+    API->>Sess: 세션 쿠키 set
+    Sess-->>API: ok
+    API-->>UI: 200 { user, session }
+    UI-->>U: /dashboard 리다이렉트
+  else 불일치
+    API-->>UI: 401 { error }
+    UI-->>U: 인라인 "이메일 또는 비밀번호가 일치하지 않습니다"
+  end
+        </pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>🗃️ 데이터 모델</h2>
+      <div class="diagram">
+        <pre class="mermaid">
+erDiagram
+  USERS ||--o| AUTH_PASSWORDS : "1:1 optional"
+  AUTH_PASSWORDS {
+    uuid user_id PK_FK
+    text hash
+    timestamptz created_at
+    timestamptz updated_at
+  }
+        </pre>
+      </div>
+      <p style="font-size:13px; color:var(--muted);">
+        <code>user_id</code> 는 PK + FK 동시. <code>ON DELETE CASCADE</code> 로 유저 삭제 시 password 행 자동 정리.
+        Optional 1:1 — 소셜 전용 유저는 행 없음.
+      </p>
+    </section>
+
+    <section>
+      <h2>🔌 API</h2>
+      <div class="api-card">
+        <span class="api-method api-post">POST</span><span class="api-path">/api/auth/signup</span>
+        <p><strong>입력:</strong> <code>{ email, password }</code></p>
+        <p><strong>출력:</strong> 201 <code>{ user, session }</code> · 409 — 이메일 중복</p>
+      </div>
+      <div class="api-card">
+        <span class="api-method api-post">POST</span><span class="api-path">/api/auth/login</span>
+        <p><strong>입력:</strong> <code>{ email, password }</code></p>
+        <p><strong>출력:</strong> 200 <code>{ user, session }</code> · 401 — 불일치</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>📱 UI — 로그인 화면</h2>
+      <div class="wireframe">
+        <div class="frame">
+          <div class="hdr">로그인</div>
+          <div class="inp">이메일</div>
+          <div class="inp">비밀번호 &nbsp; <span style="float:right;">👁</span></div>
+          <div class="btn-primary">로그인</div>
+          <div class="link">비밀번호 찾기?</div>
+          <div class="divider">or</div>
+          <div class="btn-secondary">Google 로 로그인</div>
+          <div style="text-align:center; font-size:13px; margin-top:14px; color:#64748b;">
+            계정 없으신가요? <span style="color:#60a5fa; text-decoration:underline;">가입하기</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--muted);">
+        로딩: 버튼 스피너 + 입력란 disabled.<br/>
+        에러: 입력란 위 빨강 배너.
+      </p>
+    </section>
+
+    <section>
+      <h2>📁 변경 파일 — 6개</h2>
+      <table class="styled">
+        <thead><tr><th>구분</th><th>파일</th></tr></thead>
+        <tbody>
+          <tr><td><span class="file-new">NEW</span></td><td><code>supabase/migrations/{ts}_add_auth_passwords.sql</code></td></tr>
+          <tr><td><span class="file-new">NEW</span></td><td><code>src/app/api/auth/signup/route.ts</code></td></tr>
+          <tr><td><span class="file-new">NEW</span></td><td><code>src/app/api/auth/login/route.ts</code></td></tr>
+          <tr><td><span class="file-new">NEW</span></td><td><code>src/features/auth/login/ui/LoginForm.tsx</code></td></tr>
+          <tr><td><span class="file-new">NEW</span></td><td><code>src/features/auth/login/model/login-schema.ts</code></td></tr>
+          <tr><td><span class="file-edit">EDIT</span></td><td><code>src/app/(auth)/login/page.tsx</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      생성: <code>plan-visualize</code> · <code>example.md</code><br/>
+      2026-05-20T03:27:55Z · hash <code>3c274ac9276a</code>
+    </footer>
+  </div>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true, theme: 'dark',
+      flowchart: { curve: 'basis' },
+      sequence: { useMaxWidth: true },
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--
+  generated-by: plan-visualize
+  source: {{SOURCE_PATH}}
+  source-hash: sha256:{{SOURCE_HASH}}
+  generated-at: {{GENERATED_AT}}
+  ⚠️ 자동 생성. 직접 수정 X. MD 수정 후 plan-visualize 재실행.
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TITLE}}</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #60a5fa; --success: #34d399; --warning: #fbbf24;
+      --danger: #f87171; --decision: #a78bfa; --code-bg: #0b1120;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      line-height: 1.6; font-size: 15px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    .stale-warning {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 8px 16px; font-size: 12px; color: var(--muted); text-align: center;
+    }
+    .stale-warning strong { color: var(--warning); }
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--surface), var(--surface-2));
+      border-radius: var(--radius); padding: 28px; margin-bottom: 28px;
+      border: 1px solid var(--border);
+    }
+    .hero h1 { font-size: 28px; margin: 0 0 8px 0; }
+    .hero .summary { font-size: 17px; color: var(--muted); margin-bottom: 14px; }
+    .badge {
+      display: inline-block; padding: 4px 10px; margin-right: 6px;
+      background: rgba(96,165,250,0.15); color: var(--accent);
+      border-radius: 6px; font-size: 12px; font-weight: 500;
+    }
+    /* Section */
+    section { margin-bottom: 28px; }
+    section h2 {
+      font-size: 20px; margin: 0 0 14px 0; padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+    section h3 { font-size: 16px; margin: 16px 0 8px 0; }
+    /* Boxes — 의사결정·리스크·scope */
+    .decision-box {
+      background: rgba(167,139,250,0.08); border: 2px solid var(--decision);
+      border-radius: var(--radius); padding: 18px 20px; margin: 12px 0 24px;
+    }
+    .decision-box h2 { color: var(--decision); border-bottom-color: var(--decision); }
+    .risk-box {
+      border-radius: var(--radius); padding: 14px 18px; margin: 10px 0;
+      border-left: 4px solid;
+    }
+    .risk-p0 { background: rgba(248,113,113,0.08); border-color: var(--danger); }
+    .risk-p1 { background: rgba(251,191,36,0.08); border-color: var(--warning); }
+    .risk-p2 { background: rgba(96,165,250,0.08); border-color: var(--accent); }
+    .risk-box h3 { margin: 0 0 6px 0; font-size: 15px; }
+    .risk-box .mit { margin-top: 6px; font-size: 13px; color: var(--muted); }
+    .scope-out {
+      background: rgba(71,85,105,0.15); border: 1px dashed var(--muted);
+      border-radius: var(--radius); padding: 14px 18px;
+    }
+    .scope-out h2 { color: var(--muted); border-bottom-color: var(--muted); }
+    .scope-out li { color: var(--muted); }
+    /* Cards / Tables / Diagrams */
+    .card-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px;
+    }
+    .card .icon { font-size: 24px; margin-bottom: 6px; }
+    .card h3 { margin: 0 0 4px 0; font-size: 15px; }
+    .card .meta { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .diagram {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px; overflow-x: auto;
+    }
+    .mermaid { text-align: center; }
+    table.styled {
+      width: 100%; border-collapse: collapse; background: var(--surface);
+      border-radius: var(--radius); overflow: hidden; margin: 10px 0;
+    }
+    table.styled th, table.styled td {
+      padding: 9px 13px; text-align: left;
+      border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    table.styled th { background: var(--surface-2); font-weight: 600; }
+    table.styled tr.recommended { background: rgba(52,211,153,0.08); }
+    /* API & Invariant (옵션) */
+    .api-card {
+      background: var(--surface); border-left: 4px solid var(--accent);
+      border-radius: var(--radius); padding: 14px; margin: 8px 0;
+    }
+    .api-method {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 700; margin-right: 8px; color: white;
+    }
+    .api-get { background: var(--success); } .api-post { background: var(--accent); }
+    .api-patch { background: var(--warning); } .api-delete { background: var(--danger); }
+    .api-path { font-family: 'SF Mono', monospace; font-size: 14px; }
+    .invariant {
+      background: rgba(52,211,153,0.05); border: 1px solid var(--success);
+      border-radius: var(--radius); padding: 14px 18px; margin: 8px 0;
+    }
+    .invariant-id {
+      display: inline-block; padding: 2px 8px; background: var(--success);
+      color: white; border-radius: 4px; font-size: 11px; font-weight: 700;
+    }
+    /* Wireframe (정적, 1-2장만) */
+    .wireframe {
+      background: white; color: #1e293b; border-radius: var(--radius);
+      padding: 20px; margin: 12px 0;
+    }
+    .wireframe .frame {
+      border: 2px dashed #94a3b8; border-radius: 6px; padding: 14px; min-height: 180px;
+    }
+    .wireframe .hdr {
+      padding: 10px; background: #f1f5f9; border-bottom: 1px solid #cbd5e1;
+      font-weight: 600; text-align: center; margin-bottom: 12px;
+    }
+    .wireframe .inp {
+      padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 4px;
+      margin-bottom: 10px; color: #94a3b8; font-size: 14px;
+    }
+    .wireframe .btn-primary {
+      padding: 11px; background: #60a5fa; color: white;
+      border-radius: 4px; text-align: center; font-weight: 600; margin: 10px 0;
+    }
+    /* Code */
+    code {
+      background: var(--code-bg); padding: 2px 6px; border-radius: 4px;
+      font-family: 'SF Mono', monospace; font-size: 13px; color: var(--warning);
+    }
+    pre.code-block {
+      background: var(--code-bg); padding: 14px; border-radius: var(--radius);
+      overflow-x: auto; border: 1px solid var(--border);
+    }
+    pre.code-block code { background: transparent; padding: 0; color: var(--text); }
+    /* Footer */
+    footer {
+      margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="stale-warning">
+    <strong>⚠️ 자동 생성 문서</strong> — 직접 수정 X.
+    <code>{{SOURCE_PATH}}</code> 수정 후 <code>plan-visualize</code> 재실행.
+  </div>
+  <div class="container">
+    {{CONTENT}}
+    <footer>
+      생성: <code>plan-visualize</code> · <code>{{SOURCE_PATH}}</code><br/>
+      {{GENERATED_AT}} · hash <code>{{SOURCE_HASH_SHORT}}</code>
+    </footer>
+  </div>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true, theme: 'dark',
+      flowchart: { curve: 'basis' },
+      sequence: { useMaxWidth: true },
+    });
+  </script>
+</body>
+</html>

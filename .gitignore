@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+node_modules/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# don't ignore the example HTML — it's part of the docs
+!examples/*.html
